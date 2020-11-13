@@ -1,0 +1,39 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Blog.sol": {
+      "content": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.6.12;\npragma experimental ABIEncoderV2;\n\nimport \"./libraries/Bytes32Pagination.sol\";\n\ncontract Blog {\n    using Bytes32Pagination for bytes32[];\n\n    event Created(bytes32 hash, bytes32 parentHash);\n    event Updated(bytes32 hash);\n    event Liked(bytes32 hash, address liker);\n\n    struct Revision {\n        string title;\n        string body;\n        uint256 createdAt;\n    }\n\n    struct Post {\n        bytes32 parentHash;\n        address author;\n        Revision[] revisions;\n        bytes32[] commentHashes;\n        address[] likers;\n        uint256 updatedAt;\n    }\n\n    mapping(address => bytes32[]) internal _hashesOfAuthor;\n    mapping(bytes32 => Post) internal _postOfHash;\n\n    function getPost(bytes32 hash)\n        public\n        view\n        returns (\n            address author,\n            string memory title,\n            string memory body,\n            uint256 updatedAt\n        )\n    {\n        Post storage post = _postOfHash[hash];\n        if (post.author == address(0)) {\n            return (address(0), \"\", \"\", 0);\n        } else {\n            Revision storage latest = post.revisions[post.revisions.length - 1];\n            return (post.author, latest.title, latest.body, post.updatedAt);\n        }\n    }\n\n    function numberOfRevisions(bytes32 hash) public view returns (uint256) {\n        Post storage post = _postOfHash[hash];\n        return post.revisions.length;\n    }\n\n    function revisionAt(bytes32 hash, uint256 index) public view returns (Revision memory) {\n        Post storage post = _postOfHash[hash];\n        return post.revisions[index];\n    }\n\n    function numberOfCommentHashes(bytes32 hash) public view returns (uint256) {\n        Post storage post = _postOfHash[hash];\n        return post.commentHashes.length;\n    }\n\n    function commentHashAt(bytes32 hash, uint256 index) public view returns (bytes32) {\n        Post storage post = _postOfHash[hash];\n        return post.commentHashes[index];\n    }\n\n    function numberOfLikers(bytes32 hash) public view returns (uint256) {\n        Post storage post = _postOfHash[hash];\n        return post.likers.length;\n    }\n\n    function likerAt(bytes32 hash, uint256 index) public view returns (address) {\n        Post storage post = _postOfHash[hash];\n        return post.likers[index];\n    }\n\n    function numberOfHashesOfAuthor(address author) public view returns (uint256) {\n        return _hashesOfAuthor[author].length;\n    }\n\n    function hashesOfAuthor(\n        address author,\n        uint256 page,\n        uint256 limit\n    ) public view returns (bytes32[] memory) {\n        return _hashesOfAuthor[author].paginate(page, limit);\n    }\n\n    function create(\n        string memory title,\n        string memory body,\n        bytes32 parentHash\n    ) public {\n        require(bytes(title).length > 0, \"empty-title\");\n        require(bytes(body).length > 0, \"empty-body\");\n\n        bytes32 hash =\n            keccak256(abi.encodePacked(msg.sender, title, body, parentHash, block.number));\n\n        Post storage post = _postOfHash[hash];\n        require(post.author == address(0), \"already-posted\");\n        post.author = msg.sender;\n        post.updatedAt = block.timestamp;\n\n        Revision storage revision = post.revisions.push();\n        revision.title = title;\n        revision.body = body;\n        revision.createdAt = block.timestamp;\n\n        if (parentHash != bytes32(0)) {\n            Post storage parentPost = _postOfHash[parentHash];\n            require(parentPost.author != address(0), \"invalid-parent-hash\");\n            parentPost.commentHashes.push(hash);\n        }\n\n        emit Created(hash, parentHash);\n    }\n\n    function update(\n        bytes32 hash,\n        string memory title,\n        string memory body\n    ) public {\n        require(bytes(title).length > 0, \"empty-title\");\n        require(bytes(body).length > 0, \"empty-body\");\n\n        Post storage post = _postOfHash[hash];\n        require(post.author == msg.sender, \"not-author\");\n        post.updatedAt = block.timestamp;\n\n        Revision storage revision = post.revisions.push();\n        revision.title = title;\n        revision.body = body;\n        revision.createdAt = block.timestamp;\n\n        emit Updated(hash);\n    }\n\n    function like(bytes32 hash) public {\n        Post storage post = _postOfHash[hash];\n        require(post.author != address(0), \"wrong-hash\");\n\n        for (uint256 i = 0; i < post.likers.length; i++) {\n            if (post.likers[i] == msg.sender) {\n                revert(\"already-liked\");\n            }\n        }\n        post.likers.push(msg.sender);\n\n        emit Liked(hash, msg.sender);\n    }\n}\n"
+    },
+    "contracts/libraries/Bytes32Pagination.sol": {
+      "content": "// SPDX-License-Identifier: MIT\n\npragma solidity =0.6.12;\n\nlibrary Bytes32Pagination {\n    function paginate(\n        bytes32[] memory hashes,\n        uint256 page,\n        uint256 limit\n    ) internal pure returns (bytes32[] memory result) {\n        result = new bytes32[](limit);\n        for (uint256 i = 0; i < limit; i++) {\n            if (page * limit + i >= hashes.length) {\n                result[i] = bytes32(0);\n            } else {\n                result[i] = hashes[page * limit + i];\n            }\n        }\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "metadata": {
+      "useLiteralContent": true
+    },
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "id",
+          "ast"
+        ]
+      }
+    }
+  }
+}
