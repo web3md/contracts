@@ -1,0 +1,386 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "hash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "Created",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "hash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "liker",
+          "type": "address"
+        }
+      ],
+      "name": "Liked",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "hash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "Updated",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "parentHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "create",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "author",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "page",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "limit",
+          "type": "uint256"
+        }
+      ],
+      "name": "hashesOfAuthor",
+      "outputs": [
+        {
+          "internalType": "bytes32[]",
+          "name": "",
+          "type": "bytes32[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "hash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "like",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "author",
+          "type": "address"
+        }
+      ],
+      "name": "numberOfHashesOfAuthor",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "postOfHash",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "parentHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "author",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "updatedAt",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "hash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "string",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "body",
+          "type": "string"
+        }
+      ],
+      "name": "update",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "receipt": {
+    "to": "0x4e59b44847b379578588920cA78FbF26c0B4956C",
+    "from": "0x5b8C253517b6Bd003369173109693B01cb6841B5",
+    "contractAddress": null,
+    "transactionIndex": 2,
+    "gasUsed": "666000",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xdea4a21747b40aa0ebc150dfc5f6f3d166e820cb8c5d91288ca51c8ac764207e",
+    "transactionHash": "0xae2b414f57bbd1fc4af62d7812601e6d5019f77aa5437777093018e4fc1f0fb8",
+    "logs": [],
+    "blockNumber": 22080643,
+    "cumulativeGasUsed": "1034095",
+    "status": 1,
+    "byzantium": true
+  },
+  "address": "0x14f7c9ba4ed2a02687f84f59ae5d75637d8d38b4",
+  "args": [],
+  "solcInputHash": "0x56b43ff39078cf6103d90bc86a56933e767adbc20cd4122d4593b7683b190894",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"hash\",\"type\":\"bytes32\"}],\"name\":\"Created\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"hash\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"liker\",\"type\":\"address\"}],\"name\":\"Liked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"hash\",\"type\":\"bytes32\"}],\"name\":\"Updated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"title\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"body\",\"type\":\"string\"},{\"internalType\":\"bytes32\",\"name\":\"parentHash\",\"type\":\"bytes32\"}],\"name\":\"create\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"author\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"page\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"limit\",\"type\":\"uint256\"}],\"name\":\"hashesOfAuthor\",\"outputs\":[{\"internalType\":\"bytes32[]\",\"name\":\"\",\"type\":\"bytes32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"hash\",\"type\":\"bytes32\"}],\"name\":\"like\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"author\",\"type\":\"address\"}],\"name\":\"numberOfHashesOfAuthor\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"postOfHash\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"parentHash\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"author\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"updatedAt\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"hash\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"title\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"body\",\"type\":\"string\"}],\"name\":\"update\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Blog.sol\":\"Blog\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/Blog.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.6.12;\\npragma experimental ABIEncoderV2;\\n\\nimport \\\"./libraries/Bytes32Pagination.sol\\\";\\n\\ncontract Blog {\\n    using Bytes32Pagination for bytes32[];\\n\\n    event Created(bytes32 hash);\\n    event Updated(bytes32 hash);\\n    event Liked(bytes32 hash, address liker);\\n\\n    struct Revision {\\n        string title;\\n        string body;\\n        uint256 createdAt;\\n    }\\n\\n    struct Post {\\n        bytes32 parentHash;\\n        address author;\\n        Revision[] revisions;\\n        address[] likes;\\n        uint256 updatedAt;\\n    }\\n\\n    mapping(address => bytes32[]) internal _hashesOfAuthor;\\n    mapping(bytes32 => Post) public postOfHash;\\n\\n    function numberOfHashesOfAuthor(address author) public view returns (uint256) {\\n        return _hashesOfAuthor[author].length;\\n    }\\n\\n    function hashesOfAuthor(\\n        address author,\\n        uint256 page,\\n        uint256 limit\\n    ) public view returns (bytes32[] memory) {\\n        return _hashesOfAuthor[author].paginate(page, limit);\\n    }\\n\\n    function create(\\n        string memory title,\\n        string memory body,\\n        bytes32 parentHash\\n    ) public {\\n        require(bytes(title).length > 0, \\\"empty-title\\\");\\n        require(bytes(body).length > 0, \\\"empty-body\\\");\\n        if (parentHash != bytes32(0)) {\\n            require(postOfHash[parentHash].author != address(0), \\\"invalid-parent-hash\\\");\\n        }\\n\\n        bytes32 hash = _hash(msg.sender, title, body, parentHash);\\n        Post storage post = postOfHash[hash];\\n        require(post.author == address(0), \\\"already-posted\\\");\\n        post.author = msg.sender;\\n        post.updatedAt = block.timestamp;\\n\\n        Revision storage revision = post.revisions.push();\\n        revision.title = title;\\n        revision.body = body;\\n        revision.createdAt = block.timestamp;\\n\\n        emit Created(hash);\\n    }\\n\\n    function _hash(\\n        address author,\\n        string memory title,\\n        string memory body,\\n        bytes32 parentHash\\n    ) internal view returns (bytes32) {\\n        return keccak256(abi.encodePacked(author, title, body, parentHash, block.number));\\n    }\\n\\n    function update(\\n        bytes32 hash,\\n        string memory title,\\n        string memory body\\n    ) public {\\n        require(bytes(title).length > 0, \\\"empty-title\\\");\\n        require(bytes(body).length > 0, \\\"empty-body\\\");\\n\\n        Post storage post = postOfHash[hash];\\n        require(post.author == msg.sender, \\\"not-author\\\");\\n        post.updatedAt = block.timestamp;\\n\\n        Revision storage revision = post.revisions.push();\\n        revision.title = title;\\n        revision.body = body;\\n        revision.createdAt = block.timestamp;\\n\\n        emit Updated(hash);\\n    }\\n\\n    function like(bytes32 hash) public {\\n        Post storage post = postOfHash[hash];\\n        require(post.author != address(0), \\\"wrong-hash\\\");\\n\\n        for (uint256 i = 0; i < post.likes.length; i++) {\\n            if (post.likes[i] == msg.sender) {\\n                revert(\\\"already-liked\\\");\\n            }\\n        }\\n        post.likes.push(msg.sender);\\n\\n        emit Liked(hash, msg.sender);\\n    }\\n}\\n\",\"keccak256\":\"0x75d43ffead06bc17d52e71c6ace7d329035e0cf97ee83c666446712dd9d8f806\",\"license\":\"MIT\"},\"contracts/libraries/Bytes32Pagination.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity =0.6.12;\\n\\nlibrary Bytes32Pagination {\\n    function paginate(\\n        bytes32[] memory hashes,\\n        uint256 page,\\n        uint256 limit\\n    ) internal pure returns (bytes32[] memory result) {\\n        result = new bytes32[](limit);\\n        for (uint256 i = 0; i < limit; i++) {\\n            if (page * limit + i >= hashes.length) {\\n                result[i] = bytes32(0);\\n            } else {\\n                result[i] = hashes[page * limit + i];\\n            }\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x7ec40eff569a29dd954523ccb36a92221f12a52d22be6ea0f2ffa3409dd59c79\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610b0f806100206000396000f3fe608060405234801561001057600080fd5b50600436106100625760003560e01c8063145c2c3f14610067578063305d66171461009057806330f990cb146100a5578063673fdc84146100b85780637aad1f7d146100d8578063b5bb8449146100eb575b600080fd5b61007a61007536600461078e565b61010d565b604051610087919061098d565b60405180910390f35b6100a361009e3660046107fb565b610128565b005b6100a36100b3366004610865565b61023f565b6100cb6100c63660046107b0565b6103b2565b6040516100879190610949565b6100a36100e63660046107e3565b610435565b6100fe6100f93660046107e3565b61053a565b604051610087939291906109ad565b6001600160a01b031660009081526020819052604090205490565b60008251116101525760405162461bcd60e51b815260040161014990610ab4565b60405180910390fd5b60008151116101735760405162461bcd60e51b815260040161014990610a20565b6000838152600160208190526040909120908101546001600160a01b031633146101af5760405162461bcd60e51b815260040161014990610a6c565b42600482015560028101805460018101825560009182526020918290208551600390920201916101e3918391870190610660565b5082516101f99060018301906020860190610660565b504260028201556040517fae7f59c2ef152eb4d4f56fcc655f53926d60b7e58e08ec8c79387e25adbf33319061023090879061098d565b60405180910390a15050505050565b60008351116102605760405162461bcd60e51b815260040161014990610ab4565b60008251116102815760405162461bcd60e51b815260040161014990610a20565b80156102bf57600081815260016020819052604090912001546001600160a01b03166102bf5760405162461bcd60e51b8152600401610149906109cc565b60006102cd33858585610566565b600081815260016020819052604090912090810154919250906001600160a01b03161561030c5760405162461bcd60e51b815260040161014990610a44565b600180820180546001600160a01b031916331790554260048301556002820180549182018155600090815260209081902087516003909302019161035591839190890190610660565b50845161036b9060018301906020880190610660565b504260028201556040517f102d25c49d33fcdb8976a3f2744e0785c98d9e43b88364859e6aec4ae82eff5c906103a290859061098d565b60405180910390a1505050505050565b6001600160a01b03831660009081526020818152604091829020805483518184028101840190945280845260609361042d9387938793909183018282801561041957602002820191906000526020600020905b815481526020019060010190808311610405575b50505050506105a19092919063ffffffff16565b949350505050565b6000818152600160208190526040909120908101546001600160a01b031661046f5760405162461bcd60e51b815260040161014990610a90565b60005b60038201548110156104d257336001600160a01b031682600301828154811061049757fe5b6000918252602090912001546001600160a01b031614156104ca5760405162461bcd60e51b8152600401610149906109f9565b600101610472565b50600381018054600181018255600091825260209091200180546001600160a01b031916339081179091556040517f5dfc37bd4eb2a27e5ca58365a961dd4dc9a071a49837c9c4ecdb7013cfc145349161052e91859190610996565b60405180910390a15050565b60016020819052600091825260409091208054918101546004909101546001600160a01b039091169083565b60008484848443604051602001610581959493929190610908565b604051602081830303815290604052805190602001209050949350505050565b60608167ffffffffffffffff811180156105ba57600080fd5b506040519080825280602002602001820160405280156105e4578160200160208202803683370190505b50905060005b8281101561065857845181848602011061061f576000801b82828151811061060e57fe5b602002602001018181525050610650565b8481848602018151811061062f57fe5b602002602001015182828151811061064357fe5b6020026020010181815250505b6001016105ea565b509392505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106106a157805160ff19168380011785556106ce565b828001600101855582156106ce579182015b828111156106ce5782518255916020019190600101906106b3565b506106da9291506106de565b5090565b5b808211156106da57600081556001016106df565b80356001600160a01b038116811461070a57600080fd5b92915050565b600082601f830112610720578081fd5b813567ffffffffffffffff80821115610737578283fd5b604051601f8301601f191681016020018281118282101715610757578485fd5b60405282815292508284830160200186101561077257600080fd5b8260208601602083013760006020848301015250505092915050565b60006020828403121561079f578081fd5b6107a983836106f3565b9392505050565b6000806000606084860312156107c4578182fd5b6107ce85856106f3565b95602085013595506040909401359392505050565b6000602082840312156107f4578081fd5b5035919050565b60008060006060848603121561080f578283fd5b83359250602084013567ffffffffffffffff8082111561082d578384fd5b61083987838801610710565b9350604086013591508082111561084e578283fd5b5061085b86828701610710565b9150509250925092565b600080600060608486031215610879578283fd5b833567ffffffffffffffff80821115610890578485fd5b61089c87838801610710565b945060208601359150808211156108b1578384fd5b506108be86828701610710565b925050604084013590509250925092565b60008151815b818110156108ef57602081850181015186830152016108d5565b818111156108fd5782828601525b509290920192915050565b60006bffffffffffffffffffffffff198760601b16825261093561092f60148401886108cf565b866108cf565b938452505060208201526040019392505050565b6020808252825182820181905260009190848201906040850190845b8181101561098157835183529284019291840191600101610965565b50909695505050505050565b90815260200190565b9182526001600160a01b0316602082015260400190565b9283526001600160a01b03919091166020830152604082015260600190565b6020808252601390820152720d2dcecc2d8d2c85ae0c2e4cadce85ad0c2e6d606b1b604082015260600190565b6020808252600d908201526c185b1c9958591e4b5b1a5ad959609a1b604082015260600190565b6020808252600a9082015269656d7074792d626f647960b01b604082015260600190565b6020808252600e908201526d185b1c9958591e4b5c1bdcdd195960921b604082015260600190565b6020808252600a90820152693737ba16b0baba3437b960b11b604082015260600190565b6020808252600a90820152690eee4dedcce5ad0c2e6d60b31b604082015260600190565b6020808252600b908201526a656d7074792d7469746c6560a81b60408201526060019056fea2646970667358221220f28c308b3f29f19c97be561f563e78400a6ec3a57cc8c5ff07f8648e12d94a3b64736f6c634300060c0033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100625760003560e01c8063145c2c3f14610067578063305d66171461009057806330f990cb146100a5578063673fdc84146100b85780637aad1f7d146100d8578063b5bb8449146100eb575b600080fd5b61007a61007536600461078e565b61010d565b604051610087919061098d565b60405180910390f35b6100a361009e3660046107fb565b610128565b005b6100a36100b3366004610865565b61023f565b6100cb6100c63660046107b0565b6103b2565b6040516100879190610949565b6100a36100e63660046107e3565b610435565b6100fe6100f93660046107e3565b61053a565b604051610087939291906109ad565b6001600160a01b031660009081526020819052604090205490565b60008251116101525760405162461bcd60e51b815260040161014990610ab4565b60405180910390fd5b60008151116101735760405162461bcd60e51b815260040161014990610a20565b6000838152600160208190526040909120908101546001600160a01b031633146101af5760405162461bcd60e51b815260040161014990610a6c565b42600482015560028101805460018101825560009182526020918290208551600390920201916101e3918391870190610660565b5082516101f99060018301906020860190610660565b504260028201556040517fae7f59c2ef152eb4d4f56fcc655f53926d60b7e58e08ec8c79387e25adbf33319061023090879061098d565b60405180910390a15050505050565b60008351116102605760405162461bcd60e51b815260040161014990610ab4565b60008251116102815760405162461bcd60e51b815260040161014990610a20565b80156102bf57600081815260016020819052604090912001546001600160a01b03166102bf5760405162461bcd60e51b8152600401610149906109cc565b60006102cd33858585610566565b600081815260016020819052604090912090810154919250906001600160a01b03161561030c5760405162461bcd60e51b815260040161014990610a44565b600180820180546001600160a01b031916331790554260048301556002820180549182018155600090815260209081902087516003909302019161035591839190890190610660565b50845161036b9060018301906020880190610660565b504260028201556040517f102d25c49d33fcdb8976a3f2744e0785c98d9e43b88364859e6aec4ae82eff5c906103a290859061098d565b60405180910390a1505050505050565b6001600160a01b03831660009081526020818152604091829020805483518184028101840190945280845260609361042d9387938793909183018282801561041957602002820191906000526020600020905b815481526020019060010190808311610405575b50505050506105a19092919063ffffffff16565b949350505050565b6000818152600160208190526040909120908101546001600160a01b031661046f5760405162461bcd60e51b815260040161014990610a90565b60005b60038201548110156104d257336001600160a01b031682600301828154811061049757fe5b6000918252602090912001546001600160a01b031614156104ca5760405162461bcd60e51b8152600401610149906109f9565b600101610472565b50600381018054600181018255600091825260209091200180546001600160a01b031916339081179091556040517f5dfc37bd4eb2a27e5ca58365a961dd4dc9a071a49837c9c4ecdb7013cfc145349161052e91859190610996565b60405180910390a15050565b60016020819052600091825260409091208054918101546004909101546001600160a01b039091169083565b60008484848443604051602001610581959493929190610908565b604051602081830303815290604052805190602001209050949350505050565b60608167ffffffffffffffff811180156105ba57600080fd5b506040519080825280602002602001820160405280156105e4578160200160208202803683370190505b50905060005b8281101561065857845181848602011061061f576000801b82828151811061060e57fe5b602002602001018181525050610650565b8481848602018151811061062f57fe5b602002602001015182828151811061064357fe5b6020026020010181815250505b6001016105ea565b509392505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106106a157805160ff19168380011785556106ce565b828001600101855582156106ce579182015b828111156106ce5782518255916020019190600101906106b3565b506106da9291506106de565b5090565b5b808211156106da57600081556001016106df565b80356001600160a01b038116811461070a57600080fd5b92915050565b600082601f830112610720578081fd5b813567ffffffffffffffff80821115610737578283fd5b604051601f8301601f191681016020018281118282101715610757578485fd5b60405282815292508284830160200186101561077257600080fd5b8260208601602083013760006020848301015250505092915050565b60006020828403121561079f578081fd5b6107a983836106f3565b9392505050565b6000806000606084860312156107c4578182fd5b6107ce85856106f3565b95602085013595506040909401359392505050565b6000602082840312156107f4578081fd5b5035919050565b60008060006060848603121561080f578283fd5b83359250602084013567ffffffffffffffff8082111561082d578384fd5b61083987838801610710565b9350604086013591508082111561084e578283fd5b5061085b86828701610710565b9150509250925092565b600080600060608486031215610879578283fd5b833567ffffffffffffffff80821115610890578485fd5b61089c87838801610710565b945060208601359150808211156108b1578384fd5b506108be86828701610710565b925050604084013590509250925092565b60008151815b818110156108ef57602081850181015186830152016108d5565b818111156108fd5782828601525b509290920192915050565b60006bffffffffffffffffffffffff198760601b16825261093561092f60148401886108cf565b866108cf565b938452505060208201526040019392505050565b6020808252825182820181905260009190848201906040850190845b8181101561098157835183529284019291840191600101610965565b50909695505050505050565b90815260200190565b9182526001600160a01b0316602082015260400190565b9283526001600160a01b03919091166020830152604082015260600190565b6020808252601390820152720d2dcecc2d8d2c85ae0c2e4cadce85ad0c2e6d606b1b604082015260600190565b6020808252600d908201526c185b1c9958591e4b5b1a5ad959609a1b604082015260600190565b6020808252600a9082015269656d7074792d626f647960b01b604082015260600190565b6020808252600e908201526d185b1c9958591e4b5c1bdcdd195960921b604082015260600190565b6020808252600a90820152693737ba16b0baba3437b960b11b604082015260600190565b6020808252600a90820152690eee4dedcce5ad0c2e6d60b31b604082015260600190565b6020808252600b908201526a656d7074792d7469746c6560a81b60408201526060019056fea2646970667358221220f28c308b3f29f19c97be561f563e78400a6ec3a57cc8c5ff07f8648e12d94a3b64736f6c634300060c0033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 46,
+        "contract": "contracts/Blog.sol:Blog",
+        "label": "_hashesOfAuthor",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_array(t_bytes32)dyn_storage)"
+      },
+      {
+        "astId": 50,
+        "contract": "contracts/Blog.sol:Blog",
+        "label": "postOfHash",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_bytes32,t_struct(Post)41_storage)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_address)dyn_storage": {
+        "base": "t_address",
+        "encoding": "dynamic_array",
+        "label": "address[]",
+        "numberOfBytes": "32"
+      },
+      "t_array(t_bytes32)dyn_storage": {
+        "base": "t_bytes32",
+        "encoding": "dynamic_array",
+        "label": "bytes32[]",
+        "numberOfBytes": "32"
+      },
+      "t_array(t_struct(Revision)28_storage)dyn_storage": {
+        "base": "t_struct(Revision)28_storage",
+        "encoding": "dynamic_array",
+        "label": "struct Blog.Revision[]",
+        "numberOfBytes": "32"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_array(t_bytes32)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bytes32[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_bytes32)dyn_storage"
+      },
+      "t_mapping(t_bytes32,t_struct(Post)41_storage)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => struct Blog.Post)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Post)41_storage"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Post)41_storage": {
+        "encoding": "inplace",
+        "label": "struct Blog.Post",
+        "members": [
+          {
+            "astId": 30,
+            "contract": "contracts/Blog.sol:Blog",
+            "label": "parentHash",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 32,
+            "contract": "contracts/Blog.sol:Blog",
+            "label": "author",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          },
+          {
+            "astId": 35,
+            "contract": "contracts/Blog.sol:Blog",
+            "label": "revisions",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_array(t_struct(Revision)28_storage)dyn_storage"
+          },
+          {
+            "astId": 38,
+            "contract": "contracts/Blog.sol:Blog",
+            "label": "likes",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_address)dyn_storage"
+          },
+          {
+            "astId": 40,
+            "contract": "contracts/Blog.sol:Blog",
+            "label": "updatedAt",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "160"
+      },
+      "t_struct(Revision)28_storage": {
+        "encoding": "inplace",
+        "label": "struct Blog.Revision",
+        "members": [
+          {
+            "astId": 23,
+            "contract": "contracts/Blog.sol:Blog",
+            "label": "title",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 25,
+            "contract": "contracts/Blog.sol:Blog",
+            "label": "body",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 27,
+            "contract": "contracts/Blog.sol:Blog",
+            "label": "createdAt",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "96"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  "gasEstimates": {
+    "creation": {
+      "codeDepositCost": "566200",
+      "executionCost": "600",
+      "totalCost": "566800"
+    },
+    "external": {
+      "create(string,string,bytes32)": "infinite",
+      "hashesOfAuthor(address,uint256,uint256)": "infinite",
+      "like(bytes32)": "infinite",
+      "numberOfHashesOfAuthor(address)": "1256",
+      "postOfHash(bytes32)": "2982",
+      "update(bytes32,string,string)": "infinite"
+    },
+    "internal": {
+      "_hash(address,string memory,string memory,bytes32)": "infinite"
+    }
+  }
+}

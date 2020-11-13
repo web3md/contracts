@@ -1,0 +1,39 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Blog.sol": {
+      "content": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.6.12;\npragma experimental ABIEncoderV2;\n\nimport \"./libraries/Bytes32Pagination.sol\";\n\ncontract Blog {\n    using Bytes32Pagination for bytes32[];\n\n    event Created(bytes32 hash);\n    event Updated(bytes32 hash);\n    event Liked(bytes32 hash, address liker);\n\n    struct Revision {\n        string title;\n        string body;\n        uint256 createdAt;\n    }\n\n    struct Post {\n        bytes32 parentHash;\n        address author;\n        Revision[] revisions;\n        address[] likes;\n        uint256 updatedAt;\n    }\n\n    mapping(address => bytes32[]) internal _hashesOfAuthor;\n    mapping(bytes32 => Post) public postOfHash;\n\n    function numberOfHashesOfAuthor(address author) public view returns (uint256) {\n        return _hashesOfAuthor[author].length;\n    }\n\n    function hashesOfAuthor(\n        address author,\n        uint256 page,\n        uint256 limit\n    ) public view returns (bytes32[] memory) {\n        return _hashesOfAuthor[author].paginate(page, limit);\n    }\n\n    function create(\n        string memory title,\n        string memory body,\n        bytes32 parentHash\n    ) public {\n        require(bytes(title).length > 0, \"empty-title\");\n        require(bytes(body).length > 0, \"empty-body\");\n        if (parentHash != bytes32(0)) {\n            require(postOfHash[parentHash].author != address(0), \"invalid-parent-hash\");\n        }\n\n        bytes32 hash = _hash(msg.sender, title, body, parentHash);\n        Post storage post = postOfHash[hash];\n        require(post.author == address(0), \"already-posted\");\n        post.author = msg.sender;\n        post.updatedAt = block.timestamp;\n\n        Revision storage revision = post.revisions.push();\n        revision.title = title;\n        revision.body = body;\n        revision.createdAt = block.timestamp;\n\n        emit Created(hash);\n    }\n\n    function _hash(\n        address author,\n        string memory title,\n        string memory body,\n        bytes32 parentHash\n    ) internal view returns (bytes32) {\n        return keccak256(abi.encodePacked(author, title, body, parentHash, block.number));\n    }\n\n    function update(\n        bytes32 hash,\n        string memory title,\n        string memory body\n    ) public {\n        require(bytes(title).length > 0, \"empty-title\");\n        require(bytes(body).length > 0, \"empty-body\");\n\n        Post storage post = postOfHash[hash];\n        require(post.author == msg.sender, \"not-author\");\n        post.updatedAt = block.timestamp;\n\n        Revision storage revision = post.revisions.push();\n        revision.title = title;\n        revision.body = body;\n        revision.createdAt = block.timestamp;\n\n        emit Updated(hash);\n    }\n\n    function like(bytes32 hash) public {\n        Post storage post = postOfHash[hash];\n        require(post.author != address(0), \"wrong-hash\");\n\n        for (uint256 i = 0; i < post.likes.length; i++) {\n            if (post.likes[i] == msg.sender) {\n                revert(\"already-liked\");\n            }\n        }\n        post.likes.push(msg.sender);\n\n        emit Liked(hash, msg.sender);\n    }\n}\n"
+    },
+    "contracts/libraries/Bytes32Pagination.sol": {
+      "content": "// SPDX-License-Identifier: MIT\n\npragma solidity =0.6.12;\n\nlibrary Bytes32Pagination {\n    function paginate(\n        bytes32[] memory hashes,\n        uint256 page,\n        uint256 limit\n    ) internal pure returns (bytes32[] memory result) {\n        result = new bytes32[](limit);\n        for (uint256 i = 0; i < limit; i++) {\n            if (page * limit + i >= hashes.length) {\n                result[i] = bytes32(0);\n            } else {\n                result[i] = hashes[page * limit + i];\n            }\n        }\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "metadata": {
+      "useLiteralContent": true
+    },
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "id",
+          "ast"
+        ]
+      }
+    }
+  }
+}
